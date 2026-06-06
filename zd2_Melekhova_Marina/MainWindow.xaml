@@ -1,0 +1,109 @@
+﻿<Window x:Class="zd2_3_Melekhova_Marina.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:zd2_3_Melekhova_Marina"
+        mc:Ignorable="d"
+        Title="Магазин" Height="550" Width="650">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Меню приложения -->
+        <Menu Grid.Row="0" Margin="0,0,0,10">
+            <MenuItem Header="Задание">
+                <MenuItem Header="Магазин" Click="Shop_Click"/>
+                <Separator/>
+                <MenuItem Header="Выход" Click="Exit_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Заголовок окна -->
+        <Border Grid.Row="1" Background="#34495E" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+            <TextBlock x:Name="TitleBlock" FontSize="16" FontWeight="Bold" 
+                       Foreground="White" Text="МАГАЗИН" 
+                       HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Панель управления магазином -->
+        <Border Grid.Row="2" BorderBrush="#7F8C8D" BorderThickness="1" 
+                CornerRadius="5" Padding="10" Margin="0,0,0,10">
+            <StackPanel>
+                <TextBlock FontWeight="Bold" FontSize="16" Margin="0,0,0,15" 
+                           Text="УПРАВЛЕНИЕ МАГАЗИНОМ" HorizontalAlignment="Center"/>
+
+                <!-- Блок: Создание товара -->
+                <GroupBox Header="Создать товар" Margin="0,5">
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Width="70" Text="Название:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="CreateName" Width="150" ToolTip="Название товара"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Width="70" Text="Цена:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="CreatePrice" Width="80" ToolTip="Цена в рублях"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Width="70" Text="Количество:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="CreateCount" Width="80" ToolTip="Количество"/>
+                        </StackPanel>
+                        <Button x:Name="CreateBtn" Content="Добавить товар" Click="CreateProduct_Click" 
+                                Width="120" Margin="0,10,0,0" Background="#27AE60" Foreground="White"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- Блок: Продажа товара -->
+                <GroupBox Header="Продать товар" Margin="0,5">
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Width="70" Text="Название:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="SellName" Width="150" ToolTip="Название товара"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Width="70" Text="Количество:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="SellCount" Width="80" Text="1" ToolTip="Количество для продажи"/>
+                        </StackPanel>
+                        <Button x:Name="SellBtn" Content="Продать" Click="SellProduct_Click" 
+                                Width="120" Margin="0,10,0,0" Background="#E67E22" Foreground="White"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- Блок: Поиск товара -->
+                <GroupBox Header="Поиск товара" Margin="0,5">
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <TextBlock Width="70" Text="Название:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="FindName" Width="150" ToolTip="Название для поиска"/>
+                        </StackPanel>
+                        <Button x:Name="FindBtn" Content="Найти" Click="FindProduct_Click" 
+                                Width="120" Margin="0,10,0,0" Background="#3498DB" Foreground="White"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- Блок: Дополнительные действия -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15">
+                    <Button x:Name="AllProductsBtn" Content="Все товары" Click="AllProducts_Click" 
+                            Width="100" Margin="5" Height="35"/>
+                    <Button x:Name="ProfitBtn" Content="Прибыль" Click="Profit_Click" 
+                            Width="100" Margin="5" Height="35"/>
+                    <Button x:Name="ClearShopBtn" Content="Очистить" Click="ClearShop_Click" 
+                            Width="100" Margin="5" Height="35" Background="#C0392B" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Область вывода результатов -->
+        <Border Grid.Row="3" BorderBrush="#7F8C8D" BorderThickness="1" CornerRadius="5" Padding="10">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <TextBlock x:Name="ResultTextBlock" TextWrapping="Wrap" 
+                           FontFamily="Consolas" FontSize="12"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>
